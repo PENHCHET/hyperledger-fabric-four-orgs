@@ -1,0 +1,88 @@
+---
+
+## Profiles Section
+Profiles:
+
+    FourOrgsOrdererGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+                    - *Org3
+                    - *Org4
+    FourOrgsChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+                - *Org3
+                - *Org4
+
+## Organizations Section
+Organizations:
+
+    ## Create OrdererOrg and Alias Name with OrdereOrg
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        ## MSP Directory in the ordererOrganization
+        MSPDir: crypto-config/ordererOrganizations/healthcare.kr/msp
+
+    ## Create Org1 and Alias Name with Org1
+    - &Org1
+        Name: Org1MSP
+        ID: Org1MSP
+        MSPDir: crypto-config/peerOrganizations/org1.healthcare.kr/msp
+        AnchorPeers:
+            - Host: peer0.org1.healthcare.kr
+              Port: 7051
+
+    - &Org2
+        Name: Org2MSP
+        ID: Org2MSP
+        MSPDir: crypto-config/peerOrganizations/org2.healthcare.kr/msp
+        AnchorPeers:
+            - Host: peer0.org2.healthcare.kr
+              Port: 7051
+
+    - &Org3
+        Name: Org3MSP
+        ID: Org3MSP
+        MSPDir: crypto-config/peerOrganizations/org3.healthcare.kr/msp
+        AnchorPeers:
+            - Host: peer0.org3.healthcare.kr
+              Port: 7051
+
+    - &Org4
+        Name: Org4MSP
+        ID: Org4MSP
+        MSPDir: crypto-config/peerOrganizations/org4.healthcare.kr/msp
+        AnchorPeers:
+            - Host: peer0.org4.healthcare.kr
+              Port: 7051
+
+## Alias Name with &OrdererDefault
+Orderer: &OrdererDefaults
+    OrdererType: solo
+    Addresses:
+        - orderer.healthcare.kr:7050
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+    Kafka:
+        Brokers: 
+            - 127.0.0.1:9092
+    Organizations:
+
+## Alias Name with &ApplicationDefault
+Application: &ApplicationDefaults
+    Organizations:
