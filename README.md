@@ -720,7 +720,7 @@ peer chaincode invoke -o orderer.healthcare.kr:7050  --tls --cafile /opt/gopath/
 
 ### Query for net values
 
-We did some changes to the values of our assets `a` and `b`. If you recall, we instantiated `a` to be 100 and invoked the 4 times by transferring 10 from `a` to `b`. So we expect the queries return the value of 60 for `a` and 230 for `b`.
+We did some changes to the values of our assets `a` and `b`. If you recall, we instantiated `a` to be 100 and invoked the 4 times by transferring 10 from `a` to `b`. So we expect the queries return the value of 60 for `a` and 240 for `b`.
 
 * Query for `a`:
 ```
