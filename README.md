@@ -671,7 +671,7 @@ CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypt
 CORE_PEER_ADDRESS=peer0.org4.healthcare.kr:7051 
 CORE_PEER_LOCALMSPID="Org4MSP" 
 CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.healthcare.kr/peers/peer0.org4.healthcare.kr/tls/ca.crt 
-peer chaincode install -n mycc -v 1.
+peer chaincode install -n mycc -v 1.0 -p github.com/chaincode/chaincode_example02/go/
 ```
 
 ### Instantiate Chaincode
