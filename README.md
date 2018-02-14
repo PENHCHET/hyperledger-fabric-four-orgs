@@ -68,7 +68,7 @@ Orderers: The details regarding the Orderer parameters
 
 Applications: Application defaults - not needed
 
-### crypto-config.yaml
+### configtx.yaml
 
 ```
 ---
